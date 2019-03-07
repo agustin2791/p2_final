@@ -10,6 +10,10 @@ public class Student {
         this.gpa = sGPA;
     }
 
+    public String getDetails() {
+        return "Name: " + this.name + " | Address: " + this.address + " | GPA: " + this.gpa;
+    }
+
     public String getStudentName() {
         return this.name;
     }
@@ -22,18 +26,18 @@ public class Student {
         return this.gpa;
     }
 
-    public String editStudentName(String newName) {
+    public void editStudentName(String newName) {
         this.name = newName;
-        return "New Name: " + this.name;
+        System.out.println("New Name: " + this.name);
     }
 
-    public String editStudentAddress(String newAddress) {
+    public void editStudentAddress(String newAddress) {
         this.address = newAddress;
-        return "New Address: " + this.address;
+        System.out.println("New Address: " + this.address);
     }
 
-    public String editStudentGPA(double newGPA) {
+    public void editStudentGPA(double newGPA) {
         this.gpa = newGPA;
-        return "New GPA: " + this.gpa;
+        System.out.println("New GPA: " + this.gpa);
     }
 }
