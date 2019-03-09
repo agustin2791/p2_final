@@ -41,9 +41,9 @@ public class main {
             double stuGPA;
             // Gets the information of the new student to be added
             System.out.println("New Student Name:");
-            String stuName = scnr.next();
+            String stuName = scnr.nextLine();
             System.out.println("New Student Address:");
-            String stuAddress = scnr.next();
+            String stuAddress = scnr.nextLine();
             System.out.println("New Student GPA:");
             // Makes sure the next input is a double
             while(!scnr.hasNextDouble()) {
@@ -200,9 +200,9 @@ public class main {
                 students = sortByName(students);
                 while (writing && tries != 5) {
                     try {
-                        System.out.println("Where in your computer would you like the list saved? (must end with a / ex: c:/temp/)");
+                        System.out.println("Where in your computer would you like the list saved? (must not end with a / ex: c:/temp)");
                         String dirLocation = scnr.next();
-                        FileWriter fileToWrite = new FileWriter(dirLocation + "students.txt");
+                        FileWriter fileToWrite = new FileWriter(dirLocation + "/students.txt");
                         PrintWriter printToFile = new PrintWriter(fileToWrite);
                         printToFile.println("Student List");
                         printToFile.println("---------------");
@@ -214,6 +214,7 @@ public class main {
                     } catch (IOException e) {
                         System.out.println("Cannot print to that location");
                     }
+                    // You have 5 tries to print your list
                     tries++;
                 }
 
