@@ -1,6 +1,4 @@
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -197,10 +195,28 @@ public class main {
                 }
             } else if (action == 4) {
                 int i;
+                boolean writing = true;
+                int tries = 0;
                 students = sortByName(students);
-                for (i = 0; i < students.size(); i++) {
-                    System.out.println(students.get(i).getDetails());
+                while (writing && tries != 5) {
+                    try {
+                        System.out.println("Where in your computer would you like the list saved? (must end with a / ex: c:/temp/)");
+                        String dirLocation = scnr.next();
+                        FileWriter fileToWrite = new FileWriter(dirLocation + "students.txt");
+                        PrintWriter printToFile = new PrintWriter(fileToWrite);
+                        printToFile.println("Student List");
+                        printToFile.println("---------------");
+                        for (i = 0; i < students.size(); i++) {
+                            printToFile.println(students.get(i).getDetails());
+                        }
+                        printToFile.close();
+                        writing = false;
+                    } catch (IOException e) {
+                        System.out.println("Cannot print to that location");
+                    }
+                    tries++;
                 }
+
             } else if (action == 5) {
                 System.out.println("Goodbye!");
                 start = false;
